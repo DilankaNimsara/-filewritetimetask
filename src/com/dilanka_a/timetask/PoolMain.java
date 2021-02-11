@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -32,11 +33,9 @@ public class PoolMain {
         FileWriter fileWriter;
         String fileName;
 
-
         long startTime = System.nanoTime();
 
-//        String sql = "SELECT ID FROM LVMT_SWT_ST_TRANSACTION";
-        String sql = "SELECT id FROM users";
+        String sql = "SELECT ID FROM LVMT_SWT_ST_TRANSACTION";
 
         try {
 
@@ -49,63 +48,23 @@ public class PoolMain {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
 
-
             while (rs.next()) {
-//                TRANSACTION.add(rs.getString("ID"));
-                TRANSACTION.add(rs.getString("id"));
+                TRANSACTION.add(rs.getString("ID"));
             }
 
-//            new Thread(() -> {
-//                ExecutorService pool = Executors.newFixedThreadPool(5);
-//                for (int i = 0; i < TRANSACTION.size() / 4; i++) {
-//                    Runnable writeFile = new PoolWrite(TRANSACTION.get(i), BUFFER_WRITER);
-//                    pool.execute(writeFile);
-//                }
-//                pool.shutdown();
-//            }).start();
-//
-//            new Thread(() -> {
-//                ExecutorService pool = Executors.newFixedThreadPool(5);
-//                for (int i = TRANSACTION.size() / 4; i < TRANSACTION.size()/2; i++) {
-//                    Runnable writeFile = new PoolWrite(TRANSACTION.get(i), BUFFER_WRITER);
-//                    pool.execute(writeFile);
-//                }
-//                pool.shutdown();
-//            }).start();
-//
-//            new Thread(() -> {
-//                ExecutorService pool = Executors.newFixedThreadPool(5);
-//                for (int i = TRANSACTION.size() / 2; i < TRANSACTION.size(); i++) {
-//                    Runnable writeFile = new PoolWrite(TRANSACTION.get(i), BUFFER_WRITER);
-//                    pool.execute(writeFile);
-//                }
-//                pool.shutdown();
-//            }).start();
-
-
             ExecutorService pool1 = Executors.newFixedThreadPool(10);
-            ExecutorService pool2 = Executors.newFixedThreadPool(10);
-            ExecutorService pool3 = Executors.newFixedThreadPool(10);
 
-            for (int i = 0; i < TRANSACTION.size() / 4; i++) {
+            int count;
+
+
+            for (int i = 0; i < TRANSACTION.size(); i++) {
                 Runnable writeFile = new PoolWrite(TRANSACTION.get(i), BUFFER_WRITER);
                 pool1.execute(writeFile);
             }
 
-            for (int i = TRANSACTION.size() / 4; i < TRANSACTION.size() / 2; i++) {
-                Runnable writeFile = new PoolWrite(TRANSACTION.get(i), BUFFER_WRITER);
-                pool2.execute(writeFile);
-            }
-
-            for (int i = TRANSACTION.size() / 2; i < TRANSACTION.size(); i++) {
-                Runnable writeFile = new PoolWrite(TRANSACTION.get(i), BUFFER_WRITER);
-                pool3.execute(writeFile);
-            }
             pool1.shutdown();
-            pool2.shutdown();
-            pool3.shutdown();
 
-            while (!pool1.isTerminated() && !pool2.isTerminated() && !pool3.isTerminated()) {
+            while (!pool1.isTerminated()) {
             }
 
             REPORT_COUNT++;
@@ -118,6 +77,7 @@ public class PoolMain {
             try {
                 BUFFER_WRITER.flush();
                 BUFFER_WRITER.close();
+                TRANSACTION.clear();
                 rs.close();
                 ps.close();
                 connection.close();
@@ -127,8 +87,6 @@ public class PoolMain {
 
         long endTime = System.nanoTime();
         System.out.println("Execution Time : " + (endTime - startTime) / 50000 + "ms");
-
-        BUFFER_WRITER = null;
 
     }
 

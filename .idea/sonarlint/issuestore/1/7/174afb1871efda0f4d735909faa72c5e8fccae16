@@ -1,0 +1,6 @@
+
+>	java:S108")Either remove or fill this block of code.(ï­£Ä
+b	java:S116"MRename this field "ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÞÒï
+Ž
+java:S1845"yRename method "getID" to prevent any misunderstanding/clash with method "getId" defined in superclass "java.lang.Thread".(ŸÉÍ$
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¯¶ 

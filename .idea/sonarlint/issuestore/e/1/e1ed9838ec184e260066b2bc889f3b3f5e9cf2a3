@@ -1,0 +1,47 @@
+
+N	java:S106‚"9Replace this use of System.out or System.err by a logger.(†ëú3
+E
+java:S2093)"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+n
+java:S1104"XMake REPORT_COUNT a static final constant or non-public and provide accessors if needed.(†ÿÆ¬
+q
+java:S3008"VRename this field "TRANSACTION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øšš©ıÿÿÿÿ
+‘
+java:S1319"vThe type of the "TRANSACTION" object should be an interface such as "List" rather than the implementation "ArrayList".(øšš©ıÿÿÿÿ
+J	java:S108l")Either remove or fill this block of code.(øÙŠçÿÿÿÿÿ8ŠùÏø.
+H
+java:S1444"2Make this "public static REPORT_COUNT" field final(†ÿÆ¬
+C	java:S108}")Either remove or fill this block of code.(åØÁâúÿÿÿÿ
+W	java:S1257"<This block of commented-out lines of code should be removed.(Ñ¾V8ÉÖÏÎø.
+m
+java:S3008"WRename this field "REPORT_COUNT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†ÿÆ¬
+N	java:S106q"9Replace this use of System.out or System.err by a logger.(¸›öå
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(øšš©ıÿÿÿÿ
+j
+java:S20951"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(´âîæùÿÿÿÿ
+r
+java:S1104"WMake TRANSACTION a static final constant or non-public and provide accessors if needed.(øšš©ıÿÿÿÿ
+o
+java:S1104"YMake BUFFER_WRITER a static final constant or non-public and provide accessors if needed.(Š©
+n
+java:S3008"XRename this field "BUFFER_WRITER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š©
+8
+java:S2386"Make this member "protected".(øšš©ıÿÿÿÿ
+N	java:S106t"9Replace this use of System.out or System.err by a logger.(î‘ÿ“
+L
+java:S1444"1Make this "public static TRANSACTION" field final(øšš©ıÿÿÿÿ
+I
+java:S1444"3Make this "public static BUFFER_WRITER" field final(Š©
+]	java:S125'"<This block of commented-out lines of code should be removed.(¨˜Ú–øÿÿÿÿ8¾ùÎÎø.
+]	java:S125:"<This block of commented-out lines of code should be removed.(ğ˜üúÿÿÿÿ8¸ÚÏø.
+L
+java:S2696o"6Make the enclosing method "static" or remove this set.(ï¶âÇ
+Q
+java:S2696/"6Make the enclosing method "static" or remove this set.(™ˆ†­ùÿÿÿÿ
+N
+java:S1128",Remove this unused import 'java.util.Timer'.(†£ñáÿÿÿÿÿ8ÒÄÚÜø.
+\
+java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª8ÒÄÚÜø.
+M
+java:S1128"0Remove this unused import 'java.util.TimerTask'.(àÀÇÙ8ÒÄÚÜø.
